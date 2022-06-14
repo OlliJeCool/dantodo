@@ -10,7 +10,7 @@ namespace ToDoDan.Models
 
         }
 
-        public DbSet<Task> Tasks { get; set; }
+        public DbSet<Item> Items { get; set; }
         public DbSet<List> Lists { get; set; }
     }
 }
