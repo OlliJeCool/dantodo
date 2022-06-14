@@ -11,6 +11,6 @@ namespace ToDoDan.Models
         }
 
         public DbSet<Item> Items { get; set; }
-        public DbSet<List> Lists { get; set; }
+        public DbSet<TaskList> Lists { get; set; }
     }
 }
