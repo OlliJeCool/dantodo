@@ -17,15 +17,11 @@ namespace ToDoDan.Controllers
         [HttpPost("create")]
         public IActionResult Create([FromBody] CreateListVm model)
         {
-            foreach(Guid id in model.Ids)
+            _context.Lists.Add(new TaskList()
             {
-                _context.Lists.Add(new TaskList()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = model.Name,
-                    TaskId = id
-                });
-            }
+                Id = Guid.NewGuid(),
+                Name = model.Name
+            });
             _context.SaveChanges();
             return Ok();
         }
@@ -33,11 +29,9 @@ namespace ToDoDan.Controllers
         [HttpPost("delete")]
         public IActionResult Delete([FromBody] DeleteListVm model)
         {
-            var group = _context.Lists.Where(l => l.Id == model.Id).ToList();
-            foreach (var item in group)
-            {
-               _context.Lists.Remove(item);
-            }
+            var lists = _context.Lists.SingleOrDefault(x => x.Id == model.Id);
+            if (lists == null) return BadRequest();
+            _context.Lists.Remove(lists);
             _context.SaveChanges();
             return Ok();
         }
@@ -45,10 +39,13 @@ namespace ToDoDan.Controllers
         [HttpGet("getlist/{id}")]
         public IActionResult GetList([FromRoute] Guid id)
         {
-            var list = _context.Lists.Where(x => x.Id == id).ToArray();
-            if(list is null) return NotFound();
-            return Ok(list);
+            return Ok(_context.Items.Where(x => x.ListId == id));
         }
 
+        [HttpGet("getAll")]
+        public IActionResult GetAllLists()
+        {
+            return Ok(_context.Lists.ToList());
+        }
     }
 }

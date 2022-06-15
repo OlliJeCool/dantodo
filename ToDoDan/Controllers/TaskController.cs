@@ -23,7 +23,8 @@ public class TaskController : ControllerBase
             Name = model.Name,
             Description = model.Description,
             CreatedDate = DateTime.UtcNow,
-            Complete = false
+            Complete = false,
+            ListId = _context.Lists.SingleOrDefault(x => x.Name == "MainList").Id
         });
         _context.SaveChanges();
         return Ok();
@@ -43,7 +44,7 @@ public class TaskController : ControllerBase
     [HttpGet("GetTasks")]
     public IActionResult GetTasks()
     {
-        return Ok(_context.Items.ToArray());
+        return Ok(_context.Items.ToList());
     }
 
     [HttpPost("complete")]
@@ -53,6 +54,7 @@ public class TaskController : ControllerBase
         if (item == null)
             return BadRequest();
         item.Complete = true;
+        item.ListId = _context.Lists.SingleOrDefault(x => x.Name == "CompletedList").Id;
         _context.Update(item);
         _context.SaveChanges();
         return Ok();

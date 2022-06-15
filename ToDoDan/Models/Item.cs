@@ -7,5 +7,7 @@
         public string Description { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool Complete { get; set; }
+
+        public Guid ListId { get; set; } = Guid.Empty;
     }
 }

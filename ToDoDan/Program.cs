@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ToDoDan.Models;
+using ToDoDan.Seed;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,4 +27,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+var scope = app.Services.CreateScope();
+var context = scope.ServiceProvider.GetService<ToDoDanDbContext>();
+ListSeed.Seed(context);
+
 app.Run();
+
+
