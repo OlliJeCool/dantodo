@@ -1,8 +1,8 @@
 ﻿namespace ToDoDan.Data
 {
-    public class AddTasksToListVm
+    public class AddTaskToListVm
     {
-        public string Name { get; set; }
         public Guid[] Ids { get; set; }
+        public Guid ListId { get; set; }
     }
 }

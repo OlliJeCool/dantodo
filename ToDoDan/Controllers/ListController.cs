@@ -31,6 +31,11 @@ namespace ToDoDan.Controllers
         {
             var lists = _context.Lists.SingleOrDefault(x => x.Id == model.Id);
             if (lists == null) return BadRequest();
+            var items = _context.Items.Where(x => x.ListId == model.Id).ToList();
+            foreach (var item in items)
+            {
+                item.ListId = _context.Lists.SingleOrDefault(x => x.Name == "MainList").Id;
+            }
             _context.Lists.Remove(lists);
             _context.SaveChanges();
             return Ok();
@@ -46,6 +51,19 @@ namespace ToDoDan.Controllers
         public IActionResult GetAllLists()
         {
             return Ok(_context.Lists.ToList());
+        }
+
+        [HttpPost("add")]
+        public IActionResult AddToList([FromBody] AddTaskToListVm model)
+        {
+            foreach (Guid id in model.Ids)
+            {
+                var item = _context.Items.SingleOrDefault(x => x.Id == id);
+                item.ListId = model.ListId;
+                _context.Update(item);
+            }
+            _context.SaveChanges();
+            return Ok();
         }
     }
 }

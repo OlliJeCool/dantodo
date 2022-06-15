@@ -6,18 +6,22 @@ namespace ToDoDan.Seed
     {
         public static void Seed(ToDoDanDbContext context)
         {
-            context.Lists.Add(new TaskList()
+            if (context.Lists.Where(x => x.Name == "MainList" || x.Name == "CompletedList") == null)
             {
-                Id = Guid.NewGuid(),
-                Name = "MainList"
-            });
+                context.Lists.Add(new TaskList()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "MainList"
+                });
 
-            context.Lists.Add(new TaskList()
-            {
-                Id = Guid.NewGuid(),
-                Name = "CompletedList"
-            });
-            context.SaveChanges();
+                context.Lists.Add(new TaskList()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "CompletedList"
+                });
+                context.SaveChanges();
+            }
+            else return;
         }
     }
 }

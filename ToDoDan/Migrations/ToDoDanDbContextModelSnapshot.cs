@@ -38,6 +38,9 @@ namespace ToDoDan.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<Guid>("ListId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -47,15 +50,11 @@ namespace ToDoDan.Migrations
                     b.ToTable("Items");
                 });
 
-            modelBuilder.Entity("ToDoDan.Models.List", b =>
+            modelBuilder.Entity("ToDoDan.Models.TaskList", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()

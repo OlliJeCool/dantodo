@@ -12,7 +12,7 @@ using ToDoDan.Models;
 namespace ToDoDan.Migrations
 {
     [DbContext(typeof(ToDoDanDbContext))]
-    [Migration("20220614162909_init")]
+    [Migration("20220615151033_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,6 +40,9 @@ namespace ToDoDan.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<Guid>("ListId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -49,15 +52,11 @@ namespace ToDoDan.Migrations
                     b.ToTable("Items");
                 });
 
-            modelBuilder.Entity("ToDoDan.Models.List", b =>
+            modelBuilder.Entity("ToDoDan.Models.TaskList", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()
