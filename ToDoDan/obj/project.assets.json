@@ -938,19 +938,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ollid\\.nuget\\packages\\": {}
+    "C:\\Users\\1001\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ollid\\source\\repos\\ToDoDan\\ToDoDan\\ToDoDan.csproj",
+      "projectUniqueName": "C:\\Users\\1001\\Desktop\\api\\dantodo\\ToDoDan\\ToDoDan.csproj",
       "projectName": "ToDoDan",
-      "projectPath": "C:\\Users\\ollid\\source\\repos\\ToDoDan\\ToDoDan\\ToDoDan.csproj",
-      "packagesPath": "C:\\Users\\ollid\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ollid\\source\\repos\\ToDoDan\\ToDoDan\\obj\\",
+      "projectPath": "C:\\Users\\1001\\Desktop\\api\\dantodo\\ToDoDan\\ToDoDan.csproj",
+      "packagesPath": "C:\\Users\\1001\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\1001\\Desktop\\api\\dantodo\\ToDoDan\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\ollid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\1001\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

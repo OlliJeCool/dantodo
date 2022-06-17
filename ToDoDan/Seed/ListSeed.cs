@@ -6,7 +6,7 @@ namespace ToDoDan.Seed
     {
         public static void Seed(ToDoDanDbContext context)
         {
-            if (context.Lists.Where(x => x.Name == "MainList" || x.Name == "CompletedList") == null)
+            if (context.Lists.Where(x => x.Name == "MainList" || x.Name == "CompletedList").ToList().Count == 0)
             {
                 context.Lists.Add(new TaskList()
                 {
