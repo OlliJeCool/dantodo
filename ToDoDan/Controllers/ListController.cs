@@ -35,6 +35,7 @@ namespace ToDoDan.Controllers
             foreach (var item in items)
             {
                 item.ListId = _context.Lists.SingleOrDefault(x => x.Name == "MainList").Id;
+                _context.Update(item);
             }
             _context.Lists.Remove(lists);
             _context.SaveChanges();
